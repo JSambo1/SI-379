@@ -1,21 +1,54 @@
 let score = 0;
-
+let moleInterval;
 // Write code that *every second*, picks a random unwhacked hole (use getRandomUnwhackedHoleId)
 // and adds the "needs-whack" class
 const interval = setInterval(() => {
+    const randomHoleId = getRandomUnwhackedHoleId();
+    
+    if(randomHoleId) {
+        const holeElement = document.getElementById(randomHoleId);
+        
+        //if (!holeElement.classList.contains('needs-whack')) {
+        
+        holeElement.classList.add('needs-whack');
+        console.log("added needs-whack class to random hole");
+    }
+        
+    //const randomHole = getRandomUnwhackedHoleId();
+    //document.getElementById(getRandomUnwhackedHoleId).classList.add("needs-whack");
     console.log('TODO: Add the "needs-whack" class to a random hole');
 }, 1000);
 
 for(const id of getAllHoleIds()) {
+    const holeElement = document.getElementById(id);
+    holeElement.addEventListener('click', () =>{
+        console.log("clicked");
+         if (holeElement.classList.contains('needs-whack')){
+             holeElement.classList.remove('needs-whack');
+             
+
+             holeElement.classList.add('animating-whack');
+             setTimeout(() =>{
+                holeElement.classList.remove('animating-whack');
+             }, 500);
+
+             score++;
+             document.getElementById('score').innerText = `Score: ${score}`;
+             if (score >=45) {
+                 clearInterval(interval);
+             }
+    
+        }
+    })
+    console.log(`TODO: Add a click listener for #${id} here`);
+    }
+    
     // Write code that adds a "click" listener to the element with this id
     //     When the user clicks on it, *if* the element has class "needs-whack" then:
     //          1. Remove the "needs-whack" class
     //          2. Add the "animating-whack" class *for 500 milliseconds*
     //          3. Increment the score by 1 (and update the score display)
     //          4. If the score is 45 or higher, stop the game (by clearing the interval)
-    console.log(`TODO: Add a click listener for #${id} here`);
-}
-
 /**
  * @returns a random ID of a hole that is "idle" (doesn't currently contain a mole/buckeye). If there are none, returns null
  */
