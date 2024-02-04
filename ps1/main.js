@@ -1,5 +1,12 @@
 let score = 0;
 let moleInterval;
+<<<<<<< HEAD
+=======
+
+//I used ChatGPT to help with the click functions, I was having issues with the clicks registering and the score so I plugged the whole section in and then pulled
+// and edited it as it wasn't perfect 
+
+>>>>>>> 2d6a29b2e5e3abbefd4051cb346cb94cdeef2b30
 // Write code that *every second*, picks a random unwhacked hole (use getRandomUnwhackedHoleId)
 // and adds the "needs-whack" class
 const interval = setInterval(() => {
@@ -40,12 +47,6 @@ for(const id of getAllHoleIds()) {
     
         }
     })
-        
-        //document.getElementById('score').innerText = `Score: ${score}`;
-        //if (score >=45) {
-       //     clearInterval(interval);
-       // }
-    
     console.log(`TODO: Add a click listener for #${id} here`);
     }
     
