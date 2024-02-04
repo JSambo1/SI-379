@@ -13,11 +13,68 @@ getRandomAnswer((answer) => {
     correctAnswer = answer;              // Once we have it, store it, ...
     inputEl.removeAttribute('disabled'); // enable the input field, ...
     clearInfoMessage();                  // clear the loading message, and...
-    inputEl.focus();                     // and focus the input field
+    //inputEl.focus();                     // and focus the input field
     // NOTE : If you use Live Preview, the focus line ☝️ can get annoying because
     //       it will keep focusing the input field every time you edit the file.
     //       You can comment it out.
 });
+
+//used chatgpt many many times to help me write the code, thought nothing was working then realized
+//i misnamed the wordle-wordslist folder so I kept on rewriting code that was probably correct
+
+// Step 1: Define a function displayGuessFeedback(guess) that takes a guess and displays it on the page.
+function displayGuessFeedback(guess){
+    let guessDiv = document.createElement('div');
+    guessDiv.classList.add('guess');
+    for(let i = 0; i < guess.length; i++) {
+         const guessSpan = document.createElement('span');
+         guessSpan.classList.add('letter');
+         const letter = guess[i].toUpperCase();
+         const correctLetter = correctAnswer[i].toUpperCase(); 
+         if(letter === correctLetter) {
+            console.log('Adding correct class');
+            guessSpan.classList.add('correct');
+         } else if(correctAnswer.toUpperCase().includes(letter)) {
+            console.log('Adding present class');
+            guessSpan.classList.add('present');
+         } else {
+            console.log('Adding absent class');
+            guessSpan.classList.add('absent');
+         }
+        
+        guessSpan.textContent = letter;
+        guessDiv.appendChild(guessSpan);
+     }
+
+    document.getElementById('guesses').appendChild(guessDiv);
+};
+
+inputEl.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        let guess = inputEl.value;
+        if (guess.length !== WORD_LENGTH) {
+            showInfoMessage('Your guess must be ' + `${WORD_LENGTH}` + ' letters long.');
+        } else if (guess.toUpperCase() === correctAnswer.toUpperCase()) {
+           displayGuessFeedback(guess.toUpperCase());
+           showInfoMessage('You win! The answer was ' + correctAnswer);
+           inputEl.setAttribute('disabled', 'true')
+        } else {
+            isValidWord(guess, (isValid) => {
+                if (isValid) {
+                    displayGuessFeedback(guess.toUpperCase());
+                } else {
+                    showInfoMessage(guess + ' is not a valid word.')
+                }
+            });
+            inputEl.value = "";
+        }
+    } else {
+        clearInfoMessage();
+    }
+});
+
+// Step 2: Add an event listener to the input element that listens for the 'keydown' event.
+
 
 // TODO: Fill in your code here
 // Step 1: Define a function displayGuessFeedback(guess) that takes a guess and displays it on the page.
