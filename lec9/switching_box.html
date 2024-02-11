@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Box Example</title>
+        <style>
+            #box {
+                width: 250px;
+                height: 250px;
+            }
+            .red {
+                background-color: red;
+            }
+            .blue {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <script>
+            let timerId = false;
+            const box = document.querySelector("#box");
+            function toggleColor() {
+                if(box.classList.contains("red")) {
+                    box.classList.remove("red");
+                    box.classList.add("blue");
+                } else {
+                    box.classList.remove("blue");
+                    box.classList.add("red");
+                }
+                clearTimeout(timerId);
+                timerId = setTimeout(() => {
+                    toggleColor();
+                    console.log("timeout");
+              },3000);
+            }
+            box.addEventListener("click", toggleColor)
+            toggleColor();
+        </script>
+    </body>
+</html>
