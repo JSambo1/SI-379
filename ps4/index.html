@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trivia Game</title>
+<style>
+    
+</style>
+</head>
+<body>
+<div id="question-container">
+    <h1>Trivia Game</h1>
+    <div id="question"></div>
+    <div id="options"></div>
+    <button onclick="nextQuestion()">Next</button>
+</div>
+<div id="result-container">
+    <p id="user-answer"></p>
+    <p id="correct-answer"></p>
+    <button onclick="nextQuestion()">Next</button>
+</div>
+<div id="score-container">
+    <p>Score: <span id="score"></span></p>
+</div>
+
+<div id="final-score-container">
+    <p>Your final score is: <span id="final-score"></span></p>
+
+<script src ="main.js"></script>
+</body>
+</html>
