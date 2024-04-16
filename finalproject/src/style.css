@@ -1,0 +1,24 @@
+.board {
+    margin-top: 20px;
+  }
+  
+  .square {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    padding: 0;
+    border: 1px solid #dee2e6;
+  }
+  
+  .square:hover {
+    border: 1px solid blueviolet;
+  }
+  
+  .flagged::after {
+    content: '🚩';
+  }
+  
+  .board-row {
+    display: flex;
+  }
+  
