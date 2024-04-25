@@ -1,6 +1,11 @@
 .board {
-    margin-top: 20px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  gap: 2px;
+  background-color: #ccc;
+  padding: 5px;
+}
+
   
   .square {
     width: 40px;
@@ -20,5 +25,67 @@
   
   .board-row {
     display: flex;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .explosion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Use viewport width */
+    height: 100vh; /* Use viewport height */
+    background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red color */
+    z-index: 999; /* Ensure the overlay appears above other elements */
+    pointer-events: none;
+    cursor: pointer;
+    display: none;
+  }
+  navbar {
+    border-radius: 0; /* Optional: adjust as needed */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem; /* Adjust as needed */
+  }
+  
+  .navbar-nav .btn {
+    margin-left: 10px; /* Adjust as needed */
+  }
+  
+  .dropdown-menu {
+    background-color: #343a40; /* Dark background color */
+  }
+  
+  .dropdown-item {
+    color: #ffffff; /* Text color */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #495057; /* Darker background color on hover */
+  }
+
+
+  .tile {
+    width: 30px;
+    height: 3s0px;
+    background-color: #c0c0c0;
+    border: 1px solid #a9a9a9;
+    position: relative;
+  }
+  
+  .square.revealed {
+    background-color: #f0f0f0;
+  }
+  
+  .square.revealed.mine {
+    background-color: #ff6666; /* Red color for revealed mines */
+  }
+  
+  .square.revealed.number {
+    color: blue; /* Color for revealed number squares */
   }
   
